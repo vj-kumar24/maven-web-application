@@ -26,7 +26,8 @@ def sendSlackNotifications(String buildStatus = 'STARTED') {
 }
 
 node{
-    
+
+buildName 'dev - #${BUILD_NUMBER}'
 def mavenHome = tool name: "maven-3.9.6"   //mavenHome is not mandatory to given whatever you give but same name in stage calling
 
 echo "The Node name is: ${env.NODE_NAME}"
@@ -40,7 +41,6 @@ try{
 sendSlackNotifications("STARTED")
     
 stage('CheckoutCode'){
-    buildName 'dev - #${BUILD_NUMBER}'
     git branch: 'development', credentialsId: 'cc9c40a8-6346-4c0e-917c-705a4acb5bf5', url: 'https://github.com/vj-kumar24/maven-web-application.git'
 }//stage closing
 
