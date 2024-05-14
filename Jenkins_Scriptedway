@@ -29,9 +29,9 @@ node{
     
 def mavenHome = tool name: "maven-3.9.6"   //mavenHome is not mandatory to given whatever you give but same name in stage calling
 
-echo "The Node name is: ${env.NODE_NAME} "
-echo "The Job name is: ${env.JOB_NAME} "
-echo "The Build Number is: ${env.BUILD_NUMBER} "
+echo "The Node name is: ${env.NODE_NAME}"
+echo "The Job name is: ${env.JOB_NAME}"
+echo "The Build Number is: ${env.BUILD_NUMBER}"
 
 try{
 sendSlackNotifications("STARTED")
