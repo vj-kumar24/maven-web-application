@@ -40,6 +40,7 @@ try{
 sendSlackNotifications("STARTED")
     
 stage('CheckoutCode'){
+    buildName 'dev - #${BUILD_NUMBER}'
     git branch: 'development', credentialsId: 'cc9c40a8-6346-4c0e-917c-705a4acb5bf5', url: 'https://github.com/vj-kumar24/maven-web-application.git'
 }//stage closing
 
