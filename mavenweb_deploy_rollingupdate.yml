@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mavenweb-depoly-ru
+  namespace: test-ns
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: mavenweb
+  template:
+    metadata:
+      name: mavenweb-pod
+      labels:
+        app: mavenweb
+    spec:
+      containers:
+      - name: mavenweb-cont
+        image: dockerhandson/maven-web-application:1
+        ports:
+        - containerPort: 8080
